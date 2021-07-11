@@ -57,11 +57,11 @@ for(let i=0;i<this.hours.length;i++)
 {
     let liElement=document.createElement('li')
     ulElement.appendChild(liElement)
-    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i]
+    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i] + ' cookies'
     
 }    let lastElement=document.createElement('li')
 ulElement.appendChild(lastElement)
-lastElement.textContent=`Total: ${this.sumCookies()}`
+lastElement.textContent=`Total: ${this.sumCookies()} cookies`
 
       }
 }
@@ -122,11 +122,12 @@ for(let i=0;i<this.hours.length;i++)
 {
     let liElement=document.createElement('li')
     ulElement.appendChild(liElement)
-    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i]
+    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i] + ' cookies'
     
 }    let lastElement=document.createElement('li')
 ulElement.appendChild(lastElement)
-lastElement.textContent=`Total: ${this.sumCookies()}`
+lastElement.textContent=`Total: ${this.sumCookies()} cookies`
+
 
       }
 }
@@ -187,11 +188,12 @@ for(let i=0;i<this.hours.length;i++)
 {
     let liElement=document.createElement('li')
     ulElement.appendChild(liElement)
-    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i]
+    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i] + ' cookies'
     
 }    let lastElement=document.createElement('li')
 ulElement.appendChild(lastElement)
-lastElement.textContent=`Total: ${this.sumCookies()}`
+lastElement.textContent=`Total: ${this.sumCookies()} cookies`
+
 
       }
 }
@@ -252,11 +254,12 @@ for(let i=0;i<this.hours.length;i++)
 {
     let liElement=document.createElement('li')
     ulElement.appendChild(liElement)
-    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i]
+    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i] + ' cookies'
     
 }    let lastElement=document.createElement('li')
 ulElement.appendChild(lastElement)
-lastElement.textContent=`Total: ${this.sumCookies()}`
+lastElement.textContent=`Total: ${this.sumCookies()} cookies`
+
 
       }
 }
@@ -317,11 +320,12 @@ for(let i=0;i<this.hours.length;i++)
 {
     let liElement=document.createElement('li')
     ulElement.appendChild(liElement)
-    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i]
+    liElement.textContent=this.hours[i]+this.avgCookiesperHour[i] + ' cookies'
     
 }    let lastElement=document.createElement('li')
 ulElement.appendChild(lastElement)
-lastElement.textContent=`Total: ${this.sumCookies()}`
+lastElement.textContent=`Total: ${this.sumCookies()} cookies`
+
 
       }
 }
