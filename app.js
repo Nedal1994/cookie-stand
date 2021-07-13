@@ -65,7 +65,7 @@ Locations.prototype.render=function()
     let tr1=document.createElement('tr')
     tbl.appendChild(tr1)
 
-    let td=document.createElement('td')
+    let td=document.createElement('th')
     tr1.appendChild(td)
     td.textContent=`${this.name}`
 
@@ -75,7 +75,7 @@ Locations.prototype.render=function()
         tr1.appendChild(td1)
         td1.textContent=this.avgCookiesperHour[i]
     }
-    let sum=document.createElement('td')
+    let sum=document.createElement('th')
     tr1.appendChild(sum)
     sum.textContent=this.totalCookies
         
