@@ -2,6 +2,11 @@
 
 let hours =['Name','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','Daily Location Total']
 
+function random(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1))+min;    
+}
+
 let parent=document.getElementById("nedal")
 let tbl=document.createElement('table')
 parent.appendChild(tbl)
@@ -14,41 +19,33 @@ function Locations(name, min, max, avg)
     this.min=min
     this.max=max
     this.avg=avg
+    this.totalCookies=0;
     this.randomCustomersArray=[]
     this.avgCookiesperHour=[]
-    this.sumarr=[]
 
     locationarr.push(this)
 }
 Locations.prototype.randomCustomers=function(min,max,avg) 
 {
-    return Math.floor(Math.random() * (max - min + 1) *avg) + min;
+    for (let i = 0; i < hours.length; i++) 
+    {
+        this.randomCustomersArray.push(random(this.min,this.max))        
+    }
 }
-Locations.prototype.randomCust=function() 
+Locations.prototype.avgCookies=function() 
 {
     for(let i=0;i<hours.length;i++)
     {
-        this.randomCustomersArray.push(this.randomCustomers(this.min,this.max,this.avg))
+        this.avgCookiesperHour.push(Math.floor(this.randomCustomersArray[i]*this.avg));
+        this.totalCookies += this.avgCookiesperHour[i];
     }    
 }
-// Locations.prototype.avgCookies=function() 
-// {
-//     for(let i=0;i<this.randomCustomersArray.length;i++)
-//     {
-//         this.avgCookiesperHour.push(Math.floor(this.randomCustomersArray[i]*this.avg))
-//     }
-// }
-// Locations.prototype.sumCookies=function() 
-// {
-//     let sum=0
-//     for(let j=0;j<this.avgCookiesperHour.length;j++)
-//     {
-//         sum=sum+this.avgCookiesperHour[j]
-//         this.sumarr.push(sum)
-//     }    
-//     return sum;
-// }
 
+let seattle=new Locations("Seattle",23,65,6.3)
+let tokyo=new Locations("Tokyo",3,24,1.2)
+let dubai=new Locations("Dubai",11,38,3.7)
+let paris=new Locations("Paris",20,38,2.3)
+let lima=new Locations("Lima",2,16,4.6)
 
 function header() {   
      let tr=document.createElement('tr')
@@ -62,45 +59,31 @@ function header() {
     }  
     
 }
-{
- 
-}
 
 Locations.prototype.render=function() 
 {
     let tr1=document.createElement('tr')
     tbl.appendChild(tr1)
-    let sum=0
-    for (let i = 0; i < 1; i++) 
-    {
-        let th1=document.createElement('th')
-        tr1.appendChild(th1)
-        th1.textContent=`${this.name}`
 
-        for(let i=0;i<14;i++)
-        {
+    let td=document.createElement('th')
+    tr1.appendChild(td)
+    td.textContent=`${this.name}`
+
+    for(let i=0;i<14;i++)
+    {
         let td1=document.createElement('td')
         tr1.appendChild(td1)
-        td1.textContent=this.randomCustomers(this.min,this.max,this.avg)
-        sum=sum+this.randomCustomers(this.min,this.max,this.avg)
-        }
-        for (let i = 0; i < 1; i++) 
-        {
-            let total=document.createElement('th')
-            tr1.appendChild(total)
-            
-            total.textContent=sum
-        }
-
-        
+        td1.textContent=this.avgCookiesperHour[i]
     }
-
-    }   
+    let sum=document.createElement('th')
+    tr1.appendChild(sum)
+    sum.textContent=this.totalCookies
+        
+}   
 
 
 function footer(params)
  {  
-      let total1=0;
     let tr2=document.createElement('tr')
     tbl.appendChild(tr2)
 
@@ -108,33 +91,32 @@ function footer(params)
     tr2.appendChild(th2)
     th2.textContent='Total'
 
- 
+    let overallTotal=0;
+
     for(let i=0;i<14;i++)
     {
-    let td2=document.createElement('td')
-    tr2.appendChild(td2)
-    td2.textContent=this.randomCustomers(this.min,this.max,this.avg)
-    total1=total1+this.randomCustomers(this.min,this.max,this.avg)
+        let total1=0;
+        for (let j = 0; j < locationarr.length; j++)
+         {
+             total1+=locationarr[j].avgCookiesperHour[i]
+             overallTotal+=locationarr[j].avgCookiesperHour[i]            
+        }
+        let footTh=document.createElement('th')
+        tr2.appendChild(footTh)
+        footTh.textContent=total1
+
     }
-    for (let i = 0; i < 1; i++) 
-    {
-        td2.textContent=`${this.total1}`
-        
-    }
+    let totalTh=document.createElement('th')
+    tr2.appendChild(totalTh)
+    totalTh.textContent=overallTotal
+
 }
-
-
-
-
-let seattle=new Locations("Seattle",23,65,6.3)
-let tokyo=new Locations("Tokyo",3,24,1.2)
-let dubai=new Locations("Dubai",11,38,3.7)
-let paris=new Locations("Paris",20,38,2.3)
-let lima=new Locations("Lima",2,16,4.6)
 
 header()
 for (let i = 0; i < locationarr.length; i++) 
 {
+    locationarr[i].randomCustomers()
+    locationarr[i].avgCookies()
     locationarr[i].render()    
 }
 
