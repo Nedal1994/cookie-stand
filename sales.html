@@ -1,16 +1,51 @@
 <html lang="en">
+
 <head>
     <title>Sales data</title>
     <link rel="stylesheet" href="text.css">
 </head>
+
 <body>
-    <header><h1>Salmon cookies table</h1></header>
+    <header>
+        <h1>Salmon cookies table</h1>
+    </header>
     <main>
-        
+        <form id="form">
+            <fieldset>
+                <h2 style="font-family:calibri ; text-align: center;">Please insert the details of the shops</h2>
+                <label for="nameField">
+                    <b style="font-size: 20px; font-family:calibri ;">Name</b>
+                </label>
+                <br>
+                <input type="text" name="nameField" id="nameField" required>
+                <br><br>
+                <label for="minField">
+                    <b style="font-size: 20px; font-family:calibri ;">Minimum number</b>
+                </label>
+                <br>
+                <input type="number" name="minField" id="minField" required style="width: 60px;">
+                <br><br>
+                <label for="maxField">
+                    <b style="font-size: 20px; font-family:calibri ;">Maximum number</b>
+                </label>
+                <br>
+                <input type="number" name="maxField" id="maxField" required style="width: 60px;">
+                <br><br>
+                <label for="avgField">
+                    <b style="font-size: 20px; font-family:calibri ;">Average number</b>
+                </label>
+                <br>
+                <input type="float" name="avgField" id="avgField" required style="width: 60px;">
+                <br><br>
+                <input type="submit" id="submit" name="submit" value="Add location" >
+                <input type="reset" value="Reset" id="reset">
+            </fieldset>
+        </form>
         <div id="nedal"></div>
 
     </main>
     <footer></footer>
     <script src="app.js"></script>
 </body>
+
 </html>

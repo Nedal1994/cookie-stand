@@ -27,14 +27,14 @@ function Locations(name, min, max, avg)
 }
 Locations.prototype.randomCustomers=function(min,max,avg) 
 {
-    for (let i = 0; i < hours.length; i++) 
+    for (let i = 0; i < hours.length-2; i++) 
     {
         this.randomCustomersArray.push(random(this.min,this.max))        
     }
 }
 Locations.prototype.avgCookies=function() 
 {
-    for(let i=0;i<hours.length;i++)
+    for(let i=0;i<hours.length-2;i++)
     {
         this.avgCookiesperHour.push(Math.floor(this.randomCustomersArray[i]*this.avg));
         this.totalCookies += this.avgCookiesperHour[i];
@@ -78,8 +78,38 @@ Locations.prototype.render=function()
     let sum=document.createElement('th')
     tr1.appendChild(sum)
     sum.textContent=this.totalCookies
-        
+    
 }   
+
+let form=document.getElementById('form')
+form.addEventListener('submit',submitFunction)
+
+function submitFunction(event) 
+{
+    event.preventDefault();
+    console.log(event)
+    let name=event.target.nameField.value;
+    let min=parseInt(event.target.minField.value)
+    let max=parseInt(event.target.maxField.value)
+    let avg=parseFloat(event.target.avgField.value)
+    let newShop=new Locations(name,min,max,avg)
+    
+    tbl.textContent=''
+    header()
+    for (let i = 0; i < locationarr.length; i++) 
+    {
+        locationarr[i].randomCustomersArray=[]
+        locationarr[i].avgCookiesperHour=[]
+        locationarr[i].totalCookies=0
+        locationarr[i].randomCustomers()
+        locationarr[i].avgCookies()
+        locationarr[i].render()
+        console.log(locationarr[i])
+    }
+    footer()
+    console.log(locationarr)
+}
+
 
 
 function footer(params)
@@ -117,7 +147,7 @@ for (let i = 0; i < locationarr.length; i++)
 {
     locationarr[i].randomCustomers()
     locationarr[i].avgCookies()
-    locationarr[i].render()    
+    locationarr[i].render()
 }
 
 footer()
@@ -128,7 +158,6 @@ footer()
 // seattle.randomCust()
 // seattle.avgCookies()
 // seattle.sumCookies()
-console.log(locationarr)
 
 
 
