@@ -23,6 +23,12 @@ b
     font-size: 24px;
 }
 
+fieldset
+{
+    background-color: burlywood;
+    width:450px;
+}
+
 
 .test li
 {
@@ -78,4 +84,45 @@ footer
     padding: 10px;
     margin-top: 222px;
     background-color: mediumaquamarine;
+}
+
+#submit
+{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 24px;
+    background-color: dodgerblue; 
+    color: white;
+}
+#submit:hover
+{
+    background-color: chartreuse;
+    color: darkblue;
+    transition: 0.3s;
+}
+#submit:active
+{
+    background-color:darkred;
+    color:lightcyan;
+}
+#reset
+{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 24px;
+    background-color: mediumspringgreen;
+    color:navy;
+    transition: 0.3s;
+}
+#reset:hover
+{
+    background-color: rgb(20, 24, 255);
+    color:white;
+}
+#reset:active
+{
+    background-color: gold;
+    color: purple;
 }
